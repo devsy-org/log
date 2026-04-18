@@ -12,7 +12,7 @@ import (
 	zaphook "github.com/Sytten/logrus-zap-hook"
 	"github.com/go-logr/logr"
 	"github.com/sirupsen/logrus"
-	"github.com/skevetter/log/logr/zapr"
+	"github.com/devsy-org/log/logr/zapr"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"k8s.io/klog/v2"
@@ -147,7 +147,7 @@ func SetGlobalKlog(logger logr.Logger, kubernetesVerbosityLevel string) error {
 
 // GetLogLevel returns the zap log level and the kubernetes verbosity level
 func GetLogLevel() (zap.AtomicLevel, string, error) {
-	return loggerLevels(LoftLogLevel())
+	return loggerLevels(LogLevel())
 }
 
 // loggerLevels returns the zap log level and the kubernetes verbosity level
@@ -168,9 +168,9 @@ func loggerLevels(logLevel string) (zap.AtomicLevel, string, error) {
 	return atomicLevel, kubernetesVerbosityLevel, err
 }
 
-// LoftLogLevel returns the log level; "debug", "info", "warn", "error", "dpanic", "panic", "fatal". (default: info)
-func LoftLogLevel() string {
-	logLevel := os.Getenv("LOFT_LOG_LEVEL") // debug, info, warn, error, dpanic, panic, fatal
+// LogLevel returns the log level; "debug", "info", "warn", "error", "dpanic", "panic", "fatal". (default: info)
+func LogLevel() string {
+	logLevel := os.Getenv("DEVSY_LOG_LEVEL") // debug, info, warn, error, dpanic, panic, fatal
 	if logLevel == "" {
 		logLevel = "info"
 	}
@@ -180,17 +180,17 @@ func LoftLogLevel() string {
 
 // GetEncoding returns the log encoding; "console" or "json". (default: console)
 func GetEncoding() string {
-	loftLogEncoding := os.Getenv("LOFT_LOG_ENCODING") // json or console
-	if loftLogEncoding == "" {
-		loftLogEncoding = "console"
+	logEncoding := os.Getenv("DEVSY_LOG_ENCODING") // json or console
+	if logEncoding == "" {
+		logEncoding = "console"
 	}
 
-	return loftLogEncoding
+	return logEncoding
 }
 
 // LogFullCallerPath returns true if the full caller path should be logged
 func LogFullCallerPath() bool {
-	logFullCallerPath := os.Getenv("LOFT_LOG_FULL_CALLER_PATH") // true or false
+	logFullCallerPath := os.Getenv("DEVSY_LOG_FULL_CALLER_PATH") // true or false
 	if logFullCallerPath == "" {
 		logFullCallerPath = "false"
 	}

@@ -8,7 +8,7 @@ import (
 
 	"github.com/go-logr/logr"
 	"github.com/sirupsen/logrus"
-	"github.com/skevetter/log/survey"
+	"github.com/devsy-org/log/survey"
 )
 
 var Discard = NewDiscardLogger(logrus.InfoLevel)

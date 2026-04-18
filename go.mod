@@ -1,4 +1,4 @@
-module github.com/skevetter/log
+module github.com/devsy-org/log
 
 go 1.25.5
 
