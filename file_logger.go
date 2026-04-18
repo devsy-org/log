@@ -10,7 +10,7 @@ import (
 	"github.com/acarl005/stripansi"
 	"github.com/go-logr/logr"
 	"github.com/sirupsen/logrus"
-	"github.com/skevetter/log/survey"
+	"github.com/devsy-org/log/survey"
 	lumberjack "gopkg.in/natefinch/lumberjack.v2"
 )
 

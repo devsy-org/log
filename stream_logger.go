@@ -17,10 +17,10 @@ import (
 	"github.com/mgutz/ansi"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
-	"github.com/skevetter/log/hash"
-	"github.com/skevetter/log/scanner"
-	"github.com/skevetter/log/survey"
-	"github.com/skevetter/log/terminal"
+	"github.com/devsy-org/log/hash"
+	"github.com/devsy-org/log/scanner"
+	"github.com/devsy-org/log/survey"
+	"github.com/devsy-org/log/terminal"
 )
 
 func GetInstance() Logger {
