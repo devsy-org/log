@@ -6,6 +6,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/acarl005/stripansi"
 	"github.com/sirupsen/logrus"
 )
 
@@ -20,12 +21,12 @@ func TestWithFields(t *testing.T) {
 			"size":   10,
 		}).Info("A group of walrus emerges from the ocean")
 
-		logOutput := output.String()
-		if !strings.Contains(logOutput, "animal=walrus") {
-			t.Errorf("expected output to contain animal=walrus, got %s", logOutput)
+		logOutput := stripansi.Strip(output.String())
+		if !strings.Contains(logOutput, "animal:walrus") {
+			t.Errorf("expected output to contain animal:walrus, got %s", logOutput)
 		}
-		if !strings.Contains(logOutput, "size=10") {
-			t.Errorf("expected output to contain size=10, got %s", logOutput)
+		if !strings.Contains(logOutput, "size:10") {
+			t.Errorf("expected output to contain size:10, got %s", logOutput)
 		}
 	})
 
